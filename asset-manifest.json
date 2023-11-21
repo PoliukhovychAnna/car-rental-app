@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/car-rental-app/static/css/main.58467fa5.css",
+    "main.js": "/car-rental-app/static/js/main.d6debbf4.js",
+    "static/media/car.webp": "/car-rental-app/static/media/car.8fdf9503b01b73dd9570.webp",
+    "index.html": "/car-rental-app/index.html",
+    "main.58467fa5.css.map": "/car-rental-app/static/css/main.58467fa5.css.map",
+    "main.d6debbf4.js.map": "/car-rental-app/static/js/main.d6debbf4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58467fa5.css",
+    "static/js/main.d6debbf4.js"
+  ]
+}
