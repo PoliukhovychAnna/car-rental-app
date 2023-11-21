@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchCars } from "../../redux/operations";
-import { selectCars } from "../../redux/selectors";
-import { CarDetails } from "../CarDetails/CarDetails";
-import defaultCar from "../../car.webp";
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCars } from '../../redux/operations';
+import { selectCars } from '../../redux/selectors';
+import { CarDetails } from '../CarDetails/CarDetails';
+import defaultCar from '../../car.webp';
 import {
   CatalogWrapper,
   List,
@@ -19,7 +19,7 @@ import {
   ListItemDescription,
   BtnLearnMore,
   BtnLoadMore,
-} from "./StyledCatalog";
+} from './StyledCatalog';
 
 export const Catalog = () => {
   const [hidden, setHidden] = useState(false);
@@ -31,24 +31,23 @@ export const Catalog = () => {
   }, [dispatch, limit]);
 
   const cars = useSelector(selectCars);
-  console.log(cars);
 
   const handleClick = () => {
     if (limit > cars.length) {
       setHidden(true);
-      console.log("the end");
-      toast.info("You have reached the end of the list", {
+      console.log('the end');
+      toast.info('You have reached the end of the list', {
         position: toast.POSITION.BOTTOM_CENTER,
       });
       return;
     }
-    setLimit((l) => l + 12);
+    setLimit(l => l + 12);
   };
 
   return (
     <CatalogWrapper>
       <List>
-        {cars.map((car) => (
+        {cars.map(car => (
           <ListItem key={car.id}>
             <ImgWrapper>
               <img
@@ -60,14 +59,14 @@ export const Catalog = () => {
             </ImgWrapper>
             <TitleWrapper>
               <CarTitle>
-                {car.make.slice(0, 10)}{" "}
+                {car.make.slice(0, 10)}{' '}
                 <SpanTitle>{car.model.slice(0, 11)}</SpanTitle>, {car.year}
               </CarTitle>
               <Price>{car.rentalPrice}</Price>
             </TitleWrapper>
 
             <ListItemDescription>
-              {car.address} | {car.rentalCompany} | {car.type} | {car.model} |{" "}
+              {car.address} | {car.rentalCompany} | {car.type} | {car.model} |{' '}
               {car.id} | {car.accessories[0].slice(0, 23)}
             </ListItemDescription>
 
