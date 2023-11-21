@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   cars: [],
-  favorite: false,
+  favorite: [],
   isLoading: false,
   error: null,
 };

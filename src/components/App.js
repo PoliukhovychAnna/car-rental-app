@@ -1,19 +1,23 @@
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectError, selectIsLoading } from "../redux/selectors";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
-import { HomePage } from "./HomePage/HomePage";
-import { Catalog } from "./Catalog/Catalog";
-import { Favorites } from "./Favorites/Favorites";
-import { NotFound } from "./NotFound/NotFound";
+import { HomePage } from "../pages/Home/HomePage";
+import { CatalogPage } from "../pages/Catalog/CatalogPage";
+import { FavoritesPage } from "../pages/Favorites/FavoritesPage";
 
 export const App = () => {
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   return (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="catalog" element={<Catalog />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="catalog" element={<CatalogPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
     </>
