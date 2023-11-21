@@ -1,10 +1,12 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { carsReducer } from "./carsSlice";
-import { filterReducer } from "./filterSlice";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { carsReducer } from './carsSlice';
+import { favoriteCarsReducer } from './favoriteCarsSlice';
+// import { filterReducer } from "./filterSlice";
 
 export const rootReducer = combineReducers({
   cars: carsReducer,
-  filter: filterReducer,
+  favoriteCars: favoriteCarsReducer,
+  // filter: filterReducer,
 });
 
 export const store = configureStore({

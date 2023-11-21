@@ -5,21 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchCars } from '../../redux/operations';
 import { selectCars } from '../../redux/selectors';
-import { CarDetails } from '../CarDetails/CarDetails';
-import defaultCar from '../../car.webp';
-import {
-  CatalogWrapper,
-  List,
-  ListItem,
-  ImgWrapper,
-  TitleWrapper,
-  CarTitle,
-  SpanTitle,
-  Price,
-  ListItemDescription,
-  BtnLearnMore,
-  BtnLoadMore,
-} from './StyledCatalog';
+import { CarsList } from '../ListOfCars/CarsList';
+import { CatalogWrapper, BtnLoadMore } from './StyledCatalog';
 
 export const Catalog = () => {
   const [hidden, setHidden] = useState(false);
@@ -46,37 +33,12 @@ export const Catalog = () => {
 
   return (
     <CatalogWrapper>
-      <List>
-        {cars.map(car => (
-          <ListItem key={car.id}>
-            <ImgWrapper>
-              <img
-                src={car.img || defaultCar}
-                alt={car.make}
-                width="274"
-                height="268"
-              />
-            </ImgWrapper>
-            <TitleWrapper>
-              <CarTitle>
-                {car.make.slice(0, 10)}{' '}
-                <SpanTitle>{car.model.slice(0, 11)}</SpanTitle>, {car.year}
-              </CarTitle>
-              <Price>{car.rentalPrice}</Price>
-            </TitleWrapper>
-
-            <ListItemDescription>
-              {car.address} | {car.rentalCompany} | {car.type} | {car.model} |{' '}
-              {car.id} | {car.accessories[0].slice(0, 23)}
-            </ListItemDescription>
-
-            <BtnLearnMore type="button">Learn more</BtnLearnMore>
-          </ListItem>
-        ))}
-      </List>
-      <BtnLoadMore hidden={hidden} onClick={() => handleClick()}>
-        Load more
-      </BtnLoadMore>
+      <CarsList cars={cars} />
+      {cars.length > 0 && (
+        <BtnLoadMore hidden={hidden} onClick={() => handleClick()}>
+          Load more
+        </BtnLoadMore>
+      )}
       <ToastContainer />
     </CatalogWrapper>
   );
